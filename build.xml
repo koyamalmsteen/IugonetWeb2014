@@ -4,7 +4,7 @@
   <property file="build.properties" />
   <property name="hostname" value="${env.HOSTNAME}" />
 
-  <target name="all" depends="clean, init, drupal, professional_responsive_theme, drush, httpd, iptables, site-install, modules, archive-restore, canoo, final_message" description="Install all" />
+  <target name="all" depends="clean, init, drupal, professional_responsive_theme, drush, httpd, iptables, site-install, modules, themes, archive-restore, canoo, final_message" description="Install all" />
 
   <target name="full" depends="all, tools" description="After Install all, it start to install IUGONET Metadata Editor" />
 
