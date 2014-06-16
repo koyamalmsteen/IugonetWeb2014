@@ -26,43 +26,12 @@
   <target name="init" description="Initialize">
     <mkdir dir="${src}" />
     <exec executable="yum">
-      <arg line="-y install php php-common php-pdo php-gd php-xml php-mbstring php-pear ImageMagick mysql-server php-mysql java-1.7.0-openjdk java-1.7.0-openjdk-devel" />
+      <arg line="-y install php php-common php-pdo php-gd php-xml php-mbstring php-pear ImageMagick mysql-server php-mysql java-1.7.0-openjdk-devel" />
     </exec>
     <exec executable="/etc/init.d/mysqld">
       <arg value="start" />
     </exec>
     <sleep seconds="15" />
-    <exec executable="mysql">
-      <arg line="-e 'create database wdsj'" />
-    </exec>
-    <exec executable="bash">
-      <arg value="-c" />
-      <arg value="mysql -D wdsj &lt; sql/wdsj.sql" />
-    </exec>
-
-    <exec executable="mysql">
-      <arg value="-e" />
-      <arg line="'CREATE USER selectOnlyUser@localhost IDENTIFIED BY &quot;pass&quot;'" />
-    </exec>
-    <exec executable="mysql">
-      <arg value="-e" />
-      <arg line="'GRANT select ON *.* TO selectOnlyUser@localhost'" />
-    </exec>
-    <exec executable="mysql">
-      <arg line="-e 'flush privileges'" />
-    </exec>
-
-    <exec executable="mysql">
-      <arg value="-e" />
-      <arg line="'CREATE USER insertOnlyUser@localhost IDENTIFIED BY &quot;pass&quot;'" />
-    </exec>
-    <exec executable="mysql">
-      <arg value="-e" />
-      <arg line="'GRANT insert ON *.* TO insertOnlyUser@localhost'" />
-    </exec>
-    <exec executable="mysql">
-      <arg line="-e 'flush privileges'" />
-    </exec>
 
     <antcall target="mysql" />
 
