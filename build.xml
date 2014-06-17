@@ -26,14 +26,8 @@
   <target name="init" description="Initialize">
     <mkdir dir="${src}" />
     <exec executable="yum">
-      <arg line="-y install php php-common php-pdo php-gd php-xml php-mbstring php-pear ImageMagick mysql-server php-mysql java-1.7.0-openjdk-devel" />
+      <arg line="-y install php php-common php-pdo php-gd php-xml php-mbstring php-pear php-pecl-apc php-pecl-apc-devel ImageMagick java-1.7.0-openjdk-devel" />
     </exec>
-    <exec executable="/etc/init.d/mysqld">
-      <arg value="start" />
-    </exec>
-    <sleep seconds="15" />
-
-    <antcall target="mysql" />
 
     <exec executable="setenforce">
       <arg value="0" />
@@ -41,13 +35,6 @@
     <replace file="/etc/selinux/config" token="SELINUX=enforcing" value="SELINUX=permissive" />
 
     <antcall target="getIpAddress" />
-  </target>
-
-  <target name="mysql">
-    <exec executable="chkconfig">
-      <arg value="mysqld" />
-      <arg value="on" />
-    </exec>
   </target>
 
   <target name="drupal" description="Install drupal">
