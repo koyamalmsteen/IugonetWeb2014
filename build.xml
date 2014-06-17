@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<project name="DoiRegistration" default="all" basedir=".">
+<project name="IugonetWeb2014" default="all" basedir=".">
   <property environment="env" />
   <property file="build.properties" />
   <property name="hostname" value="${env.HOSTNAME}" />
@@ -87,11 +87,11 @@
 
   <target name="modules" description="Install modules">
     <exec executable="drush" dir="${modules_dir}">
-      <arg line="pm-download services ctools libraries oauth views sparql sparql_views entity i18n" />
+      <arg line="pm-download services ctools libraries oauth views entity i18n" />
     </exec>
     <!-- -->
     <exec executable="drush" dir="/var/www/html">
-      <arg line="-y php oauth_common oauth_common_providerui services_oauth ctools services libraries rest_server xmlrpc_server views views_ui rdfx sparql sparql_views rdfui entity_token evoc sparql_endpoint" />
+      <arg line="-y php oauth_common oauth_common_providerui services_oauth ctools services libraries rest_server xmlrpc_server views views_ui entity_token evoc" />
     </exec>
   </target>
 
