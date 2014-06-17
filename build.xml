@@ -87,11 +87,11 @@
 
   <target name="modules" description="Install modules">
     <exec executable="drush" dir="${modules_dir}">
-      <arg line="pm-download services ctools libraries oauth views entity i18n" />
+      <arg line="pm-download services ctools libraries views entity i18n" />
     </exec>
     <!-- -->
     <exec executable="drush" dir="/var/www/html">
-      <arg line="-y php oauth_common oauth_common_providerui services_oauth ctools services libraries rest_server xmlrpc_server views views_ui entity_token evoc" />
+      <arg line="-y php ctools services libraries rest_server xmlrpc_server views views_ui entity_token evoc" />
     </exec>
   </target>
 
